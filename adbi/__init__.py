@@ -178,7 +178,7 @@ class ADBI :
         version_re = re.compile(self.schema_file_format.format(version='(.*?)'))
         schema_files = {}
         latest_version = None
-        for schema_file in self.schema_dir.iterdir():
+        for schema_file in sorted(self.schema_dir.iterdir()):
             match = version_re.match(str(schema_file.name))
             if match:
                 # Skip the 'current' version.
